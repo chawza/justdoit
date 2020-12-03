@@ -17,6 +17,7 @@ class CreateShoesTable extends Migration
             $table->id();
             $table->string('name');
             $table->double('price', 8,2);
+            $table->integer('quantity')->unsigned();
             $table->text('description');
             $table->timestamps();
         });
