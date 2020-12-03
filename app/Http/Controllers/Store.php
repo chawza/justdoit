@@ -34,7 +34,7 @@ class Store extends Controller
 
     public function addShoe(){
         /*
-        filling up forms for adding new shoes to DB
+        admin filling up forms that add new shoe product to cart then POST items to submitShoeDetail
         */
     }
 
