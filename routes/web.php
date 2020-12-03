@@ -26,12 +26,12 @@ Route::get('/', function () {
 
 # URL : /store/showcase
 Route::prefix('store')->group(function(){
-    Route::get('showcase', 'Store@storeShowcase');
-    Route::get('shoe', 'Store@showDetail');
-    Route::get('addShoe', 'Store@addShoe');
-    Route::get('update', 'Store@updateShoeDetail');
+    Route::get('showcase', 'Store@storeShowcase')->name('showcase');
+    Route::get('shoe/{shoe_id}', 'Store@shoeDetail');
+    Route::get('addShoe/{shoe_id}', 'Store@addShoe');
+    Route::get('update/{shoe_id}', 'Store@updateShoeDetail');
 
-    Route::post('shoe', 'Store@submitShotToCart');
+    Route::post('shoe', 'Store@submitShoeToCart');
     Route::post('addShoe', 'Store@SubmitAddShoe');
     Route::post('update', 'Store@SubmitShoeDetail');
 });

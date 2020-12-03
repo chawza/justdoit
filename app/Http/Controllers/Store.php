@@ -15,7 +15,7 @@ class Store extends Controller
         */
     }
 
-    public function shoeDetail(){
+    public function shoeDetail($shoe_id){
         /*
         Two things will happens depends on the user role,
             if the role is a "member", they can directly add how many item to add to the cart
@@ -23,27 +23,27 @@ class Store extends Controller
         */
     }
 
-    public function addShoe(){
+    public function addShoe($shoe_id){
         /*
         admin filling up forms that add new shoe product to cart then POST items to submitShoeDetail
         */
     }
 
-    public function updateShoeDetail(){
+    public function updateShoeDetail($shoe_id){
         /*
         page for admin to edit the shoe details and item availablity
         */
     }
 
-    public function submitShoeToCart(){
+    public function submitShoeToCart(Request $request){
         
     }
 
-    public function submitShoeDetail(){
+    public function submitShoeDetail(Request $request){
 
     }
 
-    public function submitAddShoe(){
+    public function submitAddShoe(Request $request){
 
     }
 }
