@@ -30,6 +30,10 @@ Route::prefix('store')->group(function(){
     Route::get('shoe', 'Store@showDetail');
     Route::get('addShoe', 'Store@addShoe');
     Route::get('update', 'Store@updateShoeDetail');
+
+    Route::post('shoe', 'Store@submitShotToCart');
+    Route::post('addShoe', 'Store@SubmitAddShoe');
+    Route::post('update', 'Store@SubmitShoeDetail');
 });
 
 #URL : /transaction/cart
