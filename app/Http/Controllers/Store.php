@@ -29,7 +29,7 @@ class Store extends Controller
         */
     }
 
-    public function addShoe($shoe_id){
+    public function addShoe(){
         /*
         admin filling up forms that add new shoe product to cart then POST items to submitShoeDetail
         */

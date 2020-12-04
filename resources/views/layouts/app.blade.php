@@ -73,31 +73,8 @@
         </nav>
 
         <main class="py-4">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <!-- Left panel -->
-                    <div class="col-md-2">
-                        @if ($user->role == 'member')
-                        <ul>
-                            <li><a>All Shoes</a></li>
-                            <li><a>View Cart</a></li>
-                            <li><a>View Transaction</a></li>
-                        </ul>
-
-                        @elseif ($user->role == 'admin')
-                        <ul>
-                            <li><a>All Shoes</a></li>
-                            <li><a>Add Shoe</a></li>
-                            <li><a>View Transactions</a></li>
-                        </ul>
-                        @endif
-                    </div>
-                    <!-- Right panel -->
-                    <div class="col-md-8">
-                        @section('content')
-                    </div>
-                </div>
-            </div>
+        @section('content')
+        @show
         </main>
     </div>
 </body>

@@ -29,7 +29,7 @@ Route::get('/', function () {
 Route::prefix('store')->group(function(){
     Route::get('showcase', 'Store@storeShowcase')->name('showcase');
     Route::get('shoe/{shoe_id}', 'Store@shoeDetail');
-    Route::get('addShoe/{shoe_id}', 'Store@addShoe');
+    Route::get('addShoe', 'Store@addShoe');
     Route::get('update/{shoe_id}', 'Store@updateShoeDetail');
 
     Route::post('shoe', 'Store@submitShoeToCart');
