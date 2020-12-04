@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,7 @@ Route::prefix('transaction')->group(function(){
    Route::post('card', 'Transactions@checkOut');
    Route::post('item', 'Transactions@updateCartDetail');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
