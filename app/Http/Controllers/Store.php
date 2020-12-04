@@ -18,7 +18,7 @@ class Store extends Controller
         $user = Auth::user();
         $items = DB::table('shoes')->simplePaginate(9);
 
-        return view('home');
+        return view('showcase', ['user' => $user, 'items' => $items]);
     }
 
     public function shoeDetail($shoe_id){
