@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    JUST DO IT
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -73,7 +73,31 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="row justify-content-center">
+                    <!-- Left panel -->
+                    <div class="col-md-2">
+                        @if ($user->role == 'member')
+                        <ul>
+                            <li><a>All Shoes</a></li>
+                            <li><a>View Cart</a></li>
+                            <li><a>View Transaction</a></li>
+                        </ul>
+
+                        @elseif ($user->role == 'admin')
+                        <ul>
+                            <li><a>All Shoes</a></li>
+                            <li><a>Add Shoe</a></li>
+                            <li><a>View Transactions</a></li>
+                        </ul>
+                        @endif
+                    </div>
+                    <!-- Right panel -->
+                    <div class="col-md-8">
+                        @section('content')
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 </body>

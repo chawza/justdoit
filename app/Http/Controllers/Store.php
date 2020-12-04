@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Store extends Controller
 {
@@ -13,6 +15,10 @@ class Store extends Controller
 
         pagination : ?
         */
+        $user = Auth::user();
+        $items = DB::table('shoes')->simplePaginate(9);
+
+        return view('home');
     }
 
     public function shoeDetail($shoe_id){
