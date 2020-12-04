@@ -38,6 +38,6 @@ class User extends Authenticatable
     ];
 
     protected $attributes = [
-        'role' => 'member',
+        'role' => 'member', # https://stackoverflow.com/questions/39912372/how-to-set-the-default-value-of-an-attribute-on-a-laravel-model
     ];
 }
