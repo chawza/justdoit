@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 # URL : /store/showcase
 Route::prefix('store')->group(function(){
-    Route::get('showcase', 'Store@storeShowcase')->name('showcase');
+    Route::get('showcase', 'Store@storeShowcase');
     Route::get('shoe/{shoe_id}', 'Store@shoeDetail');
     Route::get('addShoe', 'Store@addShoe');
     Route::get('update/{shoe_id}', 'Store@updateShoeDetail');
