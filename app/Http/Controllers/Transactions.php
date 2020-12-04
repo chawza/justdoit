@@ -6,6 +6,20 @@ use Illuminate\Http\Request;
 
 class Transactions extends Controller
 {
+    public function cartlistDetail(){
+        /*
+        review all items on the cart that has been added
+        or
+        edit the cart by removing or edit the quantity
+        */
+    }
+
+    public function cartItemDetail(){
+        /*
+        page for editing item quantity on cart
+        */
+    }
+
     public function viewTransactions(){
         /*
         if the user is a member, it will show all past transaction that has been made
@@ -17,11 +31,11 @@ class Transactions extends Controller
         */
     }
 
-    public function cartlistDetail(){
-        /*
-        review all items on the cart that has been added
-        or
-        edit the cart by removing or edit the quantity
-        */
+    public function checkOut(Request $request){
+
+    }
+
+    public function updateCartDetail(Request $request){
+
     }
 }

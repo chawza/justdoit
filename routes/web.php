@@ -38,6 +38,10 @@ Route::prefix('store')->group(function(){
 
 #URL : /transaction/cart
 Route::prefix('transaction')->group(function(){
-   Route::get('cart', 'Store@cartListDetail');
-   Route::get('transactions', 'Store@viewTransactions');
+   Route::get('cart', 'Transactions@cartListDetail');
+   Route::get('item', 'Transactions@cartItemDetail');
+   Route::get('transactions', 'Transactions@viewTransactions');
+
+   Route::post('card', 'Transactions@checkOut');
+   Route::post('item', 'Transactions@updateCartDetail');
 });
