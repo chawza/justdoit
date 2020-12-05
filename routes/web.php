@@ -33,8 +33,8 @@ Route::prefix('store')->group(function(){
     Route::get('update/{shoe_id}', 'Store@updateShoeDetail');
 
     Route::post('shoe', 'Store@submitShoeToCart');
-    Route::post('addShoe', 'Store@SubmitAddShoe');
-    Route::post('update', 'Store@SubmitShoeDetail');
+    Route::post('addShoe', 'Store@submitAddShoe');
+    Route::post('update', 'Store@submitShoeDetail');
 });
 
 #URL : /transaction/cart
