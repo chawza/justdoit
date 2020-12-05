@@ -43,7 +43,7 @@ Route::prefix('transaction')->group(function(){
    Route::get('item', 'Transactions@cartItemDetail');
    Route::get('transactions', 'Transactions@viewTransactions');
 
-   Route::post('card', 'Transactions@checkOut');
+   Route::post('cart', 'Transactions@checkOut');
    Route::post('item', 'Transactions@updateCartDetail');
 });
 
