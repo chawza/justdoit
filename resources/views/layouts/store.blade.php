@@ -9,7 +9,7 @@
             @if ($user->role == 'member')
                 <li class="list-group-item"><a href="/transaction/cart">View Cart</a></li>
             @elseif ($user->role == 'admin')
-                <li class="list-group-item"><a href="/store/addshoe">Add Shoe</a></li>
+                <li class="list-group-item"><a href="/store/addShoe">Add Shoe</a></li>
             @endif
             <li class="list-group-item"><a href="/transaction/transactions">View Transactions</a></li>
         </ul>
