@@ -23,6 +23,10 @@ class Transactions extends Controller
         */
     }
 
+    public function submitShoeToCart(Request $request){
+        
+    }
+
     public function viewTransactions(){
         /*
         if the user is a member, it will show all past transaction that has been made
