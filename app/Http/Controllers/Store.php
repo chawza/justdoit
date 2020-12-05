@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Shoe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class Store extends Controller
 {
@@ -49,7 +51,38 @@ class Store extends Controller
     }
 
     public function submitUpdateShoeDetail(Request $request){
+        /*
+        recieve Html form that edit the value of a shoe detail
+        */
+        $input = $request->input();
 
+        #retrieve shoe object
+        $shoe = Shoe::where('id',$input['item_id'])->first();
+
+        # remove non-item detail before updating
+        unset($input['_token']);
+        unset($input['item_id']);
+
+        #edit item attribute
+        foreach($input as $key => $value){
+            # only update value that being filled
+            if($value){
+                $shoe[$key] = $value;
+            }
+        }
+
+        if($request->file()){
+            # delete old image
+            Storage::delete('public/img' . $shoe->thumbnail);
+
+            # add new image
+            $path = $request->file('thumbnail')->store('/public/img');
+            $shoe->thumbnail = $path;
+        }
+
+        $shoe->save();
+
+        return redirect('store/showcase');
     }
 
     public function submitAddShoe(Request $request){

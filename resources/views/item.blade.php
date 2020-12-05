@@ -37,6 +37,11 @@
                     <label for="description">Item thumbnail image</label>
                     <input name="thumbnail" class="form-control-file" type="file">
                 </div>
+
+                @isset($item)
+                    <input type="hidden" name="item_id" value="{{$item->id}}">
+                @endisset
+                
                 <button id="submit-btn" type="submit" class="btn btn-primary" value="Submit">
                     @if (isset($item))
                         Update
