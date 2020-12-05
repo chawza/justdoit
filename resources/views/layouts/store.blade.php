@@ -4,19 +4,15 @@
 <!-- left panel -->
 <div class="row">
     <div class="col-md-2">
-        @if ($user->role == 'member')
-            <ul>
-                <li><a href="/showcase">All Shoe</a></li>
-                <li><a href="/cart">View Cart</a></li>
-                <li><a href="/transactions">View Transactions</a></li>
-            </ul>
-        @elseif ($user->role == 'admin')
-            <ul>
-                <li><a href="/showcase">All Shoe</a></li>
-                <li><a href="/addshoe">Add Shoe</a></li>
-                <li><a href="/transactions">View Transactions</a></li>
-            </ul>
-        @endif
+        <ul class="list-group">
+            <li class="list-group-item"><a href="/store/showcase">All Shoe</a></li>
+            @if ($user->role == 'member')
+                <li class="list-group-item"><a href="/transaction/cart">View Cart</a></li>
+            @elseif ($user->role == 'admin')
+                <li class="list-group-item"><a href="/store/addshoe">Add Shoe</a></li>
+            @endif
+            <li class="list-group-item"><a href="/transaction/transactions">View Transactions</a></li>
+        </ul>
     </div>
 
     <!-- main panel -->

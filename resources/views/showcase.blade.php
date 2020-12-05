@@ -7,11 +7,13 @@
 
     <div class="row row-cols-3">
         @foreach ($items as $item)
-            <div class="card">
-                <img class="card card-img" src="{{ asset('img/' . $item->thumbnail) }}" alt="An image of {{$item->thumbnail}}">
-                <div>
-                    <h5 class="card-title"> {{ $item->name }}</h5>
-                    <p>Rp.{{number_format($item->price, 2, ',', '.')}}</p>
+            <div class="col mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ asset('img/' . $item->thumbnail) }}" alt="An image of {{$item->thumbnail}}">
+                    <div>
+                        <h5 class="card-title"> {{ $item->name }}</h5>
+                        <p>Rp{{number_format($item->price, 2, ',', '.')}}</p>
+                    </div>
                 </div>
             </div>
         @endforeach
