@@ -48,7 +48,7 @@ class Store extends Controller
         return view('item', ['user' => Auth::user(), 'item' => $item, 'post_link' => $post_link]);
     }
 
-    public function submitShoeDetail(Request $request){
+    public function submitUpdateShoeDetail(Request $request){
 
     }
 
