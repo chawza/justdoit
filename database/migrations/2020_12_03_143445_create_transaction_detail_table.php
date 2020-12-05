@@ -17,7 +17,7 @@ class CreateTransactionDetailTable extends Migration
             $table->id();
             $table->foreignId('transaction_id');
             $table->foreignId('shoe_id');
-            $table->double('price', 8, 2);
+            $table->double('price', 10, 2);
             $table->integer('num_items');
             $table->timestamps();
         });

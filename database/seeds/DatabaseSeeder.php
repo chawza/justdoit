@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Transactions;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             ShoeSeeder::class,
+            TransactionSeeder::class,
+            TransactionDetailSeeder::class,
         ]);
     }
 }

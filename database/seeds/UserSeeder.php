@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -19,18 +20,21 @@ class UserSeeder extends Seeder
                 'role' => 'member',
                 'email' => 'asd@asd.com',
                 'password' => Hash::make('asdasd123'),
+                'created_at' => now(),
             ],
             [
                 'name' => 'Sarah',
                 'role' => 'member',
                 'email' => 'asdasd@asd.com',
                 'password' => Hash::make('asdasd123'),
-            ],
+                'created_at' => now(),
+            ],  
             [
                 'name' => 'admin1',
                 'role' => 'admin',
                 'email' => 'asd@admin.com',
                 'password' => Hash::make('asdasd123'),
+                'created_at' => now(),
             ],
         ]);
     }
