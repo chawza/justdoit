@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Transactions extends Controller
 {
@@ -29,6 +32,43 @@ class Transactions extends Controller
 
         pagination : ?
         */
+
+        # get transaction based on role
+        $transactions = [];
+        $user = Auth::user();
+        if ($user->role == 'member'){
+            $transactions = DB::table('transactions')->where('user_id', $user->id)
+            ->get();
+        }
+        else {
+            $transactions = DB::table("transactions")->get();
+        }
+
+        $tran = [];
+        foreach ($transactions as $transaction){
+            $transaction_details = DB::table('transaction_detail')->
+            where('transaction_id', $transaction->id)->get();
+
+            # get total price
+            $curr_tran = (Object)[];
+            $curr_tran->total_price = $transaction_details->sum('price');
+
+            #get transacaiton date
+            $curr_tran->date = new DateTime($transaction->created_at); 
+
+            #get all transactions items
+            $items = [];
+            foreach ($transaction_details as $detail){
+                $item = DB::table('shoes')->find($detail->shoe_id);
+                array_push($items, $item);
+            }
+            $curr_tran->items = $items;
+
+            #append transactions array
+            array_push($tran, $curr_tran);
+        }
+
+        return view('transaction', ['user'=>$user, 'transactions'=>$tran]);
     }
 
     public function checkOut(Request $request){
