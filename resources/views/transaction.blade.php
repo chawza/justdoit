@@ -9,7 +9,7 @@
         </div>
         <div class="row row-cols-4">
                 @foreach ($transaction->items as $item)
-                    <div class="col mb-3">
+                    <div class="col mb-4">
                         <div class="card">
                             <img class="card-img-top" src="{{ asset('img/' . $item->thumbnail) }}" alt="An image of {{$item->thumbnail}}">
                             <div>

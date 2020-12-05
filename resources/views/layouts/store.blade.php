@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- left panel -->
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-2">
         <ul class="list-group">
             <li class="list-group-item"><a href="/store/showcase">All Shoe</a></li>
