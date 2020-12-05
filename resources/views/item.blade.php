@@ -4,7 +4,7 @@
     <div class="row">
         @isset($item)
         <div class="col-4">
-            <img class="img-fluid" src="{{ asset('/img/' . $item->thumbnail) }}" alt="">
+            <img class="img-fluid" src="{{ asset('storage/img/' . $item->thumbnail) }}" alt="">
             <h5>{{ $item->name }}</h5>
             <p>Rp{{ number_format($item->price, 2, ',', '.') }}</p>
             <p>{{ $item->description }}</p>

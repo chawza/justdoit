@@ -11,7 +11,7 @@
                 @foreach ($transaction->items as $item)
                     <div class="col mb-4">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('img/' . $item->thumbnail) }}" alt="An image of {{$item->thumbnail}}">
+                            <img class="card-img-top" src="{{ asset('storage/img/' . $item->thumbnail) }}" alt="An image of {{$item->thumbnail}}">
                             <div>
                                 <h5 class="card-title"> {{ $item->name }}</h5>
                                 <p>Rp.{{number_format($item->price, 2, ',', '.')}}</p>
