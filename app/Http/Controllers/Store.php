@@ -33,16 +33,19 @@ class Store extends Controller
         /*
         admin filling up forms that add new shoe product to cart then POST items to submitShoeDetail
         */
+        $post_link = '/store/addShoe';
+
+        return view('item', ['user' => Auth::user(), 'post_link' => $post_link]);
     }
 
     public function updateShoeDetail($shoe_id){
         /*
         page for admin to edit the shoe details and item availablity
         */
-    }
+        $item = DB::table('shoes')->find($shoe_id);
+        $post_link = '/store/update';
 
-    public function submitShoeToCart(Request $request){
-        
+        return view('item', ['user' => Auth::user(), 'item' => $item, 'post_link' => $post_link]);
     }
 
     public function submitShoeDetail(Request $request){
@@ -50,6 +53,27 @@ class Store extends Controller
     }
 
     public function submitAddShoe(Request $request){
+        /*
+        recieve post request from HTML form and add new item to the DB shoes table
+        */
+        $input = $request->input();
 
+        # remove _token before iteration
+        unset($input['_token']);
+
+        #add item attribute
+        $new_item = [];
+        foreach($input as $key => $value){
+            $new_item[$key] = $value;
+        }
+
+        #storing image
+        $path = $request->file('thumbnail')->store('/public/img');
+        $new_item['thumbnail'] = $path;
+
+        # insert to DB
+        DB::table('shoes')->insert($new_item);
+
+        return redirect('/store/showcase');
     }
 }

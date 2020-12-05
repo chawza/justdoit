@@ -15,7 +15,7 @@
             @isset($item)
                 <p>Empty attribute will not effect database</p>
             @endisset
-            <form method="POST" action="{{$post_link}}">
+            <form method="POST" action="{{$post_link}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="name">Item Name</label>
@@ -34,7 +34,7 @@
                     <input name="quantity" class="form-control" type="text">
                 </div>
                 <div class="form-group">
-                    <label for="description">Item Description</label>
+                    <label for="description">Item thumbnail image</label>
                     <input name="thumbnail" class="form-control-file" type="file">
                 </div>
                 <button id="submit-btn" type="submit" class="btn btn-primary" value="Submit">
