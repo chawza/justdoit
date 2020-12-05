@@ -58,6 +58,11 @@ class Store extends Controller
 
         #retrieve shoe object
         $shoe = Shoe::where('id',$input['item_id'])->first();
+        
+        #if show with id doesn't exist
+        if(!$shoe){
+            return redirect('store/showcase');
+        }
 
         # remove non-item detail before updating
         unset($input['_token']);
