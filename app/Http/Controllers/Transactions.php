@@ -107,6 +107,7 @@ class Transactions extends Controller
             $items = [];
             foreach ($transaction_details as $detail){
                 $item = DB::table('shoes')->find($detail->shoe_id);
+                $item->num_items = $detail->num_items;
                 array_push($items, $item);
             }
             $curr_tran->items = $items;
