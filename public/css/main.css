@@ -1,0 +1,24 @@
+#main-panel {
+    background-color: white;
+    padding: 0;
+    margin-left: 2%;
+}
+
+#content-header {
+    background-color: rgb(88, 158, 185);
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.card {
+    border-color: white;
+}
+
+.card-body {
+    padding: 20px 0px 20px 0px;
+}
+
+.tran-header {
+    float: left;
+}

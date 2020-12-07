@@ -14,9 +14,9 @@
             <li class="list-group-item"><a href="/transaction/transactions">View Transactions</a></li>
         </ul>
     </div>
-
+    
     <!-- main panel -->
-    <div class="col-md-8">
+    <div id="main-panel" class="col-md-6">
         @section('main_panel')
         @show
     </div>

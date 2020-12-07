@@ -1,7 +1,7 @@
 @extends('layouts.store')
 
 @section('main_panel')
-    <div class="content-header">
+    <div id="content-header">
         <h1>View Shoes</h1>
     </div>
 
@@ -10,7 +10,7 @@
             <div class="col mb-4">
                 <div class="card">
                     <img class="card-img-top" src="{{ asset('storage/img/' . $item->thumbnail) }}" alt="An image of {{$item->thumbnail}}">
-                    <div>
+                    <div class="card-body">
                         <h5 class="card-title">
                             <a href="/store/shoe/{{ $item->id }}" class="stretched-link">
                                 {{ $item->name }}

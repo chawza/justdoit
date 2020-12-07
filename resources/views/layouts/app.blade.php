@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
 <body>
     <div id="app">
