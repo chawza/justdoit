@@ -11,7 +11,11 @@
                 <div class="card">
                     <img class="card-img-top" src="{{ asset('storage/img/' . $item->thumbnail) }}" alt="An image of {{$item->thumbnail}}">
                     <div>
-                        <h5 class="card-title"> {{ $item->name }}</h5>
+                        <h5 class="card-title">
+                            <a href="/store/shoe/{{ $item->id }}" class="stretched-link">
+                                {{ $item->name }}
+                            </a>
+                        </h5>
                         <p>Rp{{number_format($item->price, 2, ',', '.')}}</p>
                     </div>
                 </div>
