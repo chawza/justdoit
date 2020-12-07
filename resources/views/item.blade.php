@@ -12,43 +12,39 @@
         @endisset
         
         <div class="col-8">
-            @isset($item)
-                <p>Empty attribute will not effect database</p>
-            @endisset
             <form method="POST" action="{{$post_link}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="name">Item Name</label>
-                    <input name="name" class="form-control" type="text">
+                    <input name="name" class="form-control" type="text" required>
                 </div>
                 <div class="form-group">
                     <label for="price">Item Price</label>
-                    <input name="price" class="form-control" type="text">
+                    <input name="price" class="form-control" type="text" pattern="[0-9]{1,8}" required>
                 </div>
                 <div class="form-group">
                     <label for="description">Item Description</label>
-                    <input name="description" class="form-control" type="text">
+                    <input name="description" class="form-control" type="text" required>
                 </div>
                 <div class="form-group">
                     <label for="quantity">Quantity</label>
-                    <input name="quantity" class="form-control" type="text">
+                    <input name="quantity" class="form-control" type="text" required pattern="[0-9]*">
                 </div>
-                <div class="form-group">
-                    <label for="description">Item thumbnail image</label>
-                    <input name="thumbnail" class="form-control-file" type="file">
-                </div>
-
-                @isset($item)
-                    <input type="hidden" name="item_id" value="{{$item->id}}">
-                @endisset
                 
-                <button id="submit-btn" type="submit" class="btn btn-primary" value="Submit">
-                    @if (isset($item))
-                        Update
-                    @else
-                        Add new Shoes
-                    @endif
-                </button>
+                @if (isset($item))
+                    <div class="form-group">
+                        <label for="description">Item thumbnail image</label>
+                        <input name="thumbnail" class="form-control-file" type="file">
+                    </div>
+                    <input type="hidden" name="item_id" value="{{$item->id}}">
+                    <button id="submit-btn" type="submit" class="btn btn-primary" value="Submit">Update</button>
+                @else
+                    <div class="form-group">
+                        <label for="description">Item thumbnail image</label>
+                        <input name="thumbnail" class="form-control-file" type="file" required>
+                    </div>
+                    <button id="submit-btn" type="submit" class="btn btn-primary" value="Submit">Add Item</button>
+                @endif
             </form>
         </div>
     </div>
