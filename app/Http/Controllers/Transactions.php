@@ -91,9 +91,14 @@ class Transactions extends Controller
             $transaction_details = DB::table('transaction_detail')->
             where('transaction_id', $transaction->id)->get();
 
-            # get total price
             $curr_tran = (Object)[];
-            $curr_tran->total_price = $transaction_details->sum('price');
+
+            # get total price
+            $total_price = 0;
+            foreach ($transaction_details as $detail){
+                $total_price += ($detail->price * $detail->num_items);
+            }
+            $curr_tran->total_price = $total_price;
 
             #get transacaiton date
             $curr_tran->date = new DateTime($transaction->created_at); 
