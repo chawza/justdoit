@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
+use App\Shoe;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +26,43 @@ class Transactions extends Controller
     }
 
     public function submitShoeToCart(Request $request){
-        
+        /*
+        recieve post from user to add an item to their cart and its quantity
+        */
+        $input = $request->input();
+        $user = Auth::user();
+        $item_id = $input['item_id'];
+        $quantity = $input['quantity'];
+
+        $query = [
+            'user_id' => $user->id,
+            'shoe_id' => $item_id,
+            'quantity' => $quantity,
+        ];
+
+        if(Cart::validate($query)){
+            return view('/store/shoe/' . $item_id);
+        }else{
+            // find whether the same item is in the cart. if so, append it
+            $cart = Cart::where([
+                'user_id' => $user->id,
+                'shoe_id' => $item_id,
+            ])->first();
+            
+            if($cart){
+                $cart->quantity += $quantity;
+                $cart->save();
+            }else{
+                $new_cart = new Cart($query);
+                $new_cart->save();
+            }
+
+            $item = Shoe::find($item_id);
+            $item->quantity -= $quantity;
+            $item->save();
+        }
+    
+        return redirect('/store/showcase');
     }
 
     public function viewTransactions(){

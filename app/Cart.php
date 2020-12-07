@@ -9,6 +9,8 @@ class Cart extends Model
 {
     protected $table = 'Cart';
 
+    protected $fillable = ['user_id', 'shoe_id', 'quantity'];
+
     static function validate(array $query){
         /*
         validate cart query before adding it to the DB
