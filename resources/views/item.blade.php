@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label for="price">Item Price</label>
-                    <input name="price" class="form-control" type="text" pattern="[0-9]{1,8}" required>
+                    <input name="price" class="form-control" type="text" pattern="[0-9]{1,10}" required>
                 </div>
                 <div class="form-group">
                     <label for="description">Item Description</label>
