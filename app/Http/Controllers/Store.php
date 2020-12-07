@@ -86,7 +86,7 @@ class Store extends Controller
             # add new image
             $path = $request->file('thumbnail')->store('/public/img');
             $path = explode('/', $path);
-            $new_item['thumbnail'] = $path[count($path)-1];
+            $shoe->thumbnail = $path[count($path)-1];
         }
 
         $shoe->save();
