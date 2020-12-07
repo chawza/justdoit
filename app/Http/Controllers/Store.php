@@ -78,11 +78,12 @@ class Store extends Controller
 
         if($request->file()){
             # delete old image
-            Storage::delete('public/img' . $shoe->thumbnail);
+            Storage::delete('/public/img' . $shoe->thumbnail);
 
             # add new image
             $path = $request->file('thumbnail')->store('/public/img');
-            $shoe->thumbnail = $path;
+            $path = explode('/', $path);
+            $new_item['thumbnail'] = $path[count($path)-1];
         }
 
         $shoe->save();
@@ -107,7 +108,8 @@ class Store extends Controller
 
         #storing image
         $path = $request->file('thumbnail')->store('/public/img');
-        $new_item['thumbnail'] = $path;
+        $path = explode('/', $path);
+        $new_item['thumbnail'] = $path[count($path)-1];
 
         # insert to DB
         DB::table('shoes')->insert($new_item);
