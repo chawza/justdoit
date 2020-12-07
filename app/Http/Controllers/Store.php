@@ -29,6 +29,9 @@ class Store extends Controller
             if the role is a "member", they can directly add how many item to add to the cart
             if it's an 'admin', they can update the item by clicking button that redirect them to the "updateShoeDetail" function
         */
+        $user = Auth::user();
+        $item = DB::table('shoes')->find($shoe_id);
+        return view('shoe', ['user' => $user, 'item' => $item]);
     }
 
     public function addShoe(){

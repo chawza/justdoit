@@ -32,7 +32,7 @@ Route::prefix('store')->group(function(){
     Route::get('addShoe', 'Store@addShoe');
     Route::get('update/{shoe_id}', 'Store@updateShoeDetail');
 
-    Route::post('shoe', 'Store@submitShoeToCart');
+    Route::post('shoe', 'Transactions@submitShoeToCart');
     Route::post('addShoe', 'Store@submitAddShoe');
     Route::post('update', 'Store@submitUpdateShoeDetail');
 });
