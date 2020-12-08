@@ -29,8 +29,17 @@ class Cart extends Model
         }
 
         # validate item quantity
-        if($query['quantity'] > $item->quantity || $query['quantity'] <= 0){
+        $add_quantity = $query['quantity'];
+        if($add_quantity > $item->quantity || $add_quantity <= 0){
             return 0;
+        }
+
+        # validate the quantity if the same item has been added to the cart
+        $cart = DB::table('cart')->where('shoe_id', $item->id)->first();
+        if($cart){
+            if($cart->quantity + $add_quantity > $item->quantity){
+                return 0;
+            }
         }
 
         return 1;
