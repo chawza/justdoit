@@ -40,10 +40,10 @@ class Transactions extends Controller
             'quantity' => $quantity,
         ];
 
-        if(Cart::validate($query)){
-            return view('/store/shoe/' . $item_id);
+        if(!Cart::add_validation($query)){
+            return redirect('store/shoe/' . $item_id);
         }else{
-            // find whether the same item is in the cart. if so, append it
+            // find whether tfix he same item is in the cart. if so, append it
             $cart = Cart::where([
                 'user_id' => $user->id,
                 'shoe_id' => $item_id,

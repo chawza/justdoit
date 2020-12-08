@@ -11,7 +11,7 @@ class Cart extends Model
 
     protected $fillable = ['user_id', 'shoe_id', 'quantity'];
 
-    static function validate(array $query){
+    static function add_validation(array $query){
         /*
         validate cart query before adding it to the DB
 
@@ -24,7 +24,7 @@ class Cart extends Model
             return 0;
         }
         # validate item id
-        if($item){
+        if(!$item){
             return 0;
         }
 
