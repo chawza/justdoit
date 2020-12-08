@@ -56,10 +56,6 @@ class Transactions extends Controller
                 $new_cart = new Cart($query);
                 $new_cart->save();
             }
-
-            $item = Shoe::find($item_id);
-            $item->quantity -= $quantity;
-            $item->save();
         }
     
         return redirect('/store/showcase');
