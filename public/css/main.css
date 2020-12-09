@@ -4,6 +4,11 @@
     margin-left: 2%;
 }
 
+#panel {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
 #content-header {
     background-color: rgb(88, 158, 185);
     margin-bottom: 20px;

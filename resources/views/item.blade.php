@@ -1,7 +1,7 @@
 @extends('layouts.store')
 
 @section('main_panel')
-    <div class="row">
+    <div class="row" style="padding: 2%">
         @isset($item)
         <div class="col-4">
             <img class="img-fluid" src="{{ asset('storage/img/' . $item->thumbnail) }}" alt="">
@@ -11,7 +11,7 @@
         </div>
         @endisset
         
-        <div class="col-8">
+        <div class="col">
             <form method="POST" action="{{$post_link}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">

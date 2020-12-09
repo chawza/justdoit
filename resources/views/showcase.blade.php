@@ -5,7 +5,7 @@
         <h1>View Shoes</h1>
     </div>
 
-    <div class="row row-cols-3">
+    <div id="panel" class="row row-cols-3">
         @foreach ($items as $item)
             <div class="col mb-4">
                 <div class="card">

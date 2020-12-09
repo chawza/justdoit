@@ -1,7 +1,7 @@
 @extends('layouts.store')
 
 @section('main_panel')
-    <div class="row">
+    <div class="row" style="padding: 2%">
         <div class="col-4">
             <img class="img-fluid" src="{{ asset('storage/img/' . $item->thumbnail) }}" alt="">
         </div>
