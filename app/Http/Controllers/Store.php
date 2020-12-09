@@ -50,7 +50,7 @@ class Store extends Controller
         $item = DB::table('shoes')->find($shoe_id);
         $post_link = '/store/update';
 
-        return view('item', ['user' => Auth::user(), 'item' => $item, 'post_link' => $post_link]);
+        return view('updateItem', ['user' => Auth::user(), 'item' => $item, 'post_link' => $post_link]);
     }
 
     public function submitUpdateShoeDetail(Request $request){
