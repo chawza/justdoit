@@ -35,6 +35,7 @@ Route::prefix('store')->group(function(){
     Route::post('shoe', 'Transactions@submitShoeToCart');
     Route::post('addShoe', 'Store@submitAddShoe');
     Route::post('update', 'Store@submitUpdateShoeDetail');
+    Route::post('search', 'Store@searchBox')->name('search');
 });
 
 #URL : /transaction/cart

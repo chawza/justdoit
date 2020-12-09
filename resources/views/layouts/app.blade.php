@@ -33,9 +33,17 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
+                    @auth
+                    <form action="/store/search" method="POST">
+                        @csrf
+                        <div class="input-group mb-3">
+                            <input name="query" type="text" class="form-control" placeholder="search shoes by name">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2" value="Submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

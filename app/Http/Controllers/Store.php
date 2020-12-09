@@ -119,4 +119,22 @@ class Store extends Controller
 
         return redirect('/store/showcase');
     }
+
+    public function searchBox(Request $request){
+        /*
+        shows an item that matched a query or return to store showcase.
+        or return multiple items if there are more one that matched the query
+        to the store showcase
+        */
+        $query = $request->input('query');
+
+        $shoes = DB::table('shoes')->where('name', 'like', "%{$query}%")->paginate(9);
+        if($shoes){
+            if(count($shoes) > 1){
+                return view('showcase', ['user' => Auth::user(), 'items' => $shoes]);
+            }
+            return redirect("store/shoe/{$shoes->id}");
+        }
+        return redirect('store/showcase');
+    }
 }
