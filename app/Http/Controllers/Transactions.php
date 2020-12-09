@@ -54,6 +54,10 @@ class Transactions extends Controller
                 $cart->save();
             }else{
                 $new_cart = new Cart($query);
+                if($new_cart->quantity <= 0){
+                    # don't let add to cart if the value is zero
+                    return redirect('/store/showcase');
+                }
                 $new_cart->save();
             }
         }

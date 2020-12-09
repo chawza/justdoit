@@ -11,7 +11,7 @@
                 </div>
                 <div class="form-group">
                     <label for="price">Item Price</label>
-                    <input name="price" class="form-control" type="text" pattern="[0-9]{1,10}" required>
+                    <input name="price" class="form-control" type="number" pattern="[0-9]{1,10}" min="100" required>
                 </div>
                 <div class="form-group">
                     <label for="description">Item Description</label>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label for="quantity">Quantity</label>
-                    <input name="quantity" class="form-control" type="text" required pattern="[0-9]*">
+                    <input name="quantity" class="form-control" type="number" required pattern="[0-9]*">
                 </div>
                 
                 <div class="form-group">
