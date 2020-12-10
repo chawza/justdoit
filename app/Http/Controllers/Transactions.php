@@ -132,10 +132,11 @@ class Transactions extends Controller
         $user = Auth::user();
         if ($user->role == 'member'){
             $transactions = DB::table('transactions')->where('user_id', $user->id)
-            ->get();
+            ->orderBy('created_at', 'desc')->get();
         }
         else {
-            $transactions = DB::table("transactions")->get();
+            $transactions = DB::table("transactions")
+            ->orderBy('created_at', 'desc')->get();
         }
 
         $tran = [];
