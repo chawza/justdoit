@@ -41,11 +41,11 @@ Route::prefix('store')->group(function(){
 #URL : /transaction/cart
 Route::prefix('transaction')->group(function(){
    Route::get('cart', 'Transactions@cartListDetail');
-   Route::get('item', 'Transactions@cartItemDetail');
+   Route::get('cart/{cart_id}', 'Transactions@cartDetail');
    Route::get('transactions', 'Transactions@viewTransactions');
 
    Route::post('cart', 'Transactions@checkOut');
-   Route::post('item', 'Transactions@updateCartDetail');
+   Route::post('cart/update', 'Transactions@updateCartDetail');
 });
 
 Auth::routes();

@@ -28,10 +28,48 @@ class Transactions extends Controller
         return view('cart', ['user' => $user, 'carts' => $cart_items]);
     }
 
-    public function cartItemDetail(){
+    public function  cartDetail(Request $request, $cart_id){
         /*
         page for editing item quantity on cart
         */
+        $cart = DB::table('cart')->find($cart_id);
+
+        if(!$cart){
+            // cart with id does not exist
+            return redirect('transaction/cart');
+        }
+
+        $item = Shoe::find($cart->shoe_id);
+        if(!$item){
+            //item on t ransaction detail does not exist
+            return redirect('transaction/cart');
+        }
+        return view('cartDetail', ['user' => Auth::user(), 'cart' => $cart, 'item' => $item]);
+    }
+
+    public function updateCartDetail(Request $request){
+        /*
+        update the quantity of item on the cart or remove it
+        */
+        $input = $request->input();
+        
+        $cart = Cart::find($input['cart_id']);
+
+        if($input['action'] == 'remove'){
+            $cart->delete();
+            return redirect('transaction/cart');
+        }
+        
+        $cart->quantity = $input["quantity"];
+
+        # delete the cart its empty
+        if($cart->quntity <= 0){
+            $cart->delete();
+        }
+
+        $cart->save();
+        
+        return redirect('transaction/cart');
     }
 
     public function submitShoeToCart(Request $request){
@@ -129,10 +167,6 @@ class Transactions extends Controller
     }
 
     public function checkOut(Request $request){
-
-    }
-
-    public function updateCartDetail(Request $request){
 
     }
 }
