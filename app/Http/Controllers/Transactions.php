@@ -17,6 +17,15 @@ class Transactions extends Controller
         or
         edit the cart by removing or edit the quantity
         */
+        $user = Auth::user();
+        $carts = Cart::where('user_id', $user->id)->get();
+        
+        $cart_items = [];
+        foreach ($carts as $cart){
+            $cart->item = Shoe::find($cart->shoe_id);
+            array_push($cart_items, $cart);
+        }
+        return view('cart', ['user' => $user, 'carts' => $cart_items]);
     }
 
     public function cartItemDetail(){
