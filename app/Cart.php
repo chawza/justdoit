@@ -44,4 +44,22 @@ class Cart extends Model
 
         return 1;
     }
+
+    static function validate_transaction(array $carts){
+        /*
+        validate if transaciton can be made by checking it individulaity
+        */
+        foreach($carts as $cart){
+            $item = Shoe::find($cart->shoe_id);
+            if(!$item){
+                return 0;
+            }
+
+            if($cart->quantity > $item->quantity){
+                return 0;
+            }
+        }
+
+        return 1;
+    }
 }
