@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\Shoe;
+use App\Transaction;
+use App\TransDetail;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +30,7 @@ class Transactions extends Controller
         return view('cart', ['user' => $user, 'carts' => $cart_items]);
     }
 
-    public function  cartDetail(Request $request, $cart_id){
+    public function cartDetail(Request $request, $cart_id){
         /*
         page for editing item quantity on cart
         */
@@ -167,6 +169,40 @@ class Transactions extends Controller
     }
 
     public function checkOut(Request $request){
+        /*
+        allow user to begin transaction
+        */
+        $user = Auth::user();
 
+        $carts = Cart::where('user_id', $user->id)->get();
+        
+        if(Cart::validate_transaction($carts)){
+            $new_tran = new Transaction();
+            $new_tran->user_id = $user->id;
+            $new_tran->save();
+
+            foreach($carts as $cart){
+                # chaing item quantity
+                $item = Shoe::find($cart->shoe_id);
+                $item->quantity -= $cart->quantity;
+                $item->save();
+
+                # createa new transactions
+                $query = [
+                    'transaction_id' => $new_tran->id,
+                    'shoe_id' => $item->id,
+                    'price' => $item->price,
+                    'num_items' => $cart->quantity,
+                ];
+                DB::table('transaction_detail')->insert($query);
+
+                $cart->delete();
+            }
+        }
+        else{
+            return redirect('transaction/cart');
+        }
+
+        return redirect('transaction/transactions');
     }
 }

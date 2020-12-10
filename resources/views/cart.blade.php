@@ -27,6 +27,7 @@
             </div>
             @endforeach
             <form action="/transaction/cart" method="POST">
+                @csrf
                 <button class="btn btn-primary" type="submit" name="action" value="checkout">Checkout</button>
             </form>
         </div>

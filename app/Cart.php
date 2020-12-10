@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -45,7 +46,7 @@ class Cart extends Model
         return 1;
     }
 
-    static function validate_transaction(array $carts){
+    static function validate_transaction(Collection $carts){
         /*
         validate if transaciton can be made by checking it individulaity
         */
