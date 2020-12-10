@@ -26,10 +26,18 @@
                 </div>
             </div>
             @endforeach
-            <form action="/transaction/cart" method="POST">
-                @csrf
-                <button class="btn btn-primary" type="submit" name="action" value="checkout">Checkout</button>
-            </form>
+
+            <div class="row" style="padding: 0 2% 2% 2%">
+                <div class="col">
+                    <h5>Checkout Price : Rp{{ number_format($total_price , 2, ',', '.') }}</h5>
+                </div>
+                <div class="col-2">
+                    <form action="/transaction/cart" method="POST">
+                        @csrf
+                        <button class="btn btn-primary" type="submit" name="action" value="checkout">Checkout</button>
+                    </form>
+                </div>
+            </div>
         </div>
     @else
         <div class="row justify-content-center">

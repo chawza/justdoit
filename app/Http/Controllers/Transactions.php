@@ -23,11 +23,14 @@ class Transactions extends Controller
         $carts = Cart::where('user_id', $user->id)->get();
         
         $cart_items = [];
+        $total_price = 0;
         foreach ($carts as $cart){
-            $cart->item = Shoe::find($cart->shoe_id);
+            $item = Shoe::find($cart->shoe_id);
+            $cart->item = $item;
+            $total_price += ($cart->quantity * $item->price);
             array_push($cart_items, $cart);
         }
-        return view('cart', ['user' => $user, 'carts' => $cart_items]);
+        return view('cart', ['user' => $user, 'carts' => $cart_items, 'total_price' => $total_price]);
     }
 
     public function cartDetail(Request $request, $cart_id){
