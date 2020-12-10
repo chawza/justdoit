@@ -133,7 +133,7 @@ class Store extends Controller
             if(count($shoes) > 1){
                 return view('showcase', ['user' => Auth::user(), 'items' => $shoes]);
             }
-            return redirect("store/shoe/{$shoes->id}");
+            return redirect("store/shoe/{$shoes[0]->id}");
         }
         return redirect('store/showcase');
     }
