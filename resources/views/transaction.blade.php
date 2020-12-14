@@ -2,7 +2,12 @@
 
 @section('main_panel')
     <div id="content-header">
-        <h1>Transaction History</h1>
+        @if ($user->role == 'member')
+            <h1>{{$user->name}}'s Transaction History</h1>
+        @else
+            <h1>Transaction History</h1>
+        @endif
+        
     </div>
     <div class="container">
         @foreach ($transactions as $transaction)

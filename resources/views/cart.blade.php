@@ -2,7 +2,7 @@
 
 @section('main_panel')
     <div id="content-header">
-        <h1>Transaction History</h1>
+        <h1>{{$user->name}}'s Cart</h1>
     </div>
 
     @if ($carts)
