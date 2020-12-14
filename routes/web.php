@@ -29,12 +29,12 @@ Route::get('/', function () {
 Route::prefix('store')->group(function(){
     Route::get('showcase', 'Store@storeShowcase');
     Route::get('shoe/{shoe_id}', 'Store@shoeDetail');
-    Route::get('addShoe', 'Store@addShoe');
-    Route::get('update/{shoe_id}', 'Store@updateShoeDetail');
+    Route::get('addShoe', 'Store@addShoe')->middleware('role:admin');
+    Route::get('update/{shoe_id}', 'Store@updateShoeDetail')->middleware('role:admin');
 
     Route::post('shoe', 'Transactions@submitShoeToCart');
-    Route::post('addShoe', 'Store@submitAddShoe');
-    Route::post('update', 'Store@submitUpdateShoeDetail');
+    Route::post('addShoe', 'Store@submitAddShoe')->middleware('role:admin');
+    Route::post('update', 'Store@submitUpdateShoeDetail')->middleware('role:admin');
     Route::post('search', 'Store@searchBox')->name('search');
 });
 
