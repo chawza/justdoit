@@ -11,7 +11,7 @@
             <p>Available : {{$item->quantity}}</p>
             <p>{{ $item->description }}</p>
 
-            <form action="/transaction/cart/update" method="post">
+            <form action="/cart/update" method="post">
                 @csrf
                 <label for="quantity">Item Quantity</label>
                 <input type="number" name="quantity" min="1" max="{{$item->quantity}}" value="{{$cart->quantity}}">

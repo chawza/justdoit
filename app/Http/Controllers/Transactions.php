@@ -62,7 +62,7 @@ class Transactions extends Controller
 
         if($input['action'] == 'remove'){
             $cart->delete();
-            return redirect('transaction/cart');
+            return redirect('cart');
         }
         
         $cart->quantity = $input["quantity"];
@@ -74,7 +74,7 @@ class Transactions extends Controller
 
         $cart->save();
         
-        return redirect('transaction/cart');
+        return redirect('cart');
     }
 
     public function submitShoeToCart(Request $request){
@@ -204,9 +204,9 @@ class Transactions extends Controller
             }
         }
         else{
-            return redirect('transaction/cart');
+            return redirect('cart');
         }
 
-        return redirect('transaction/transactions');
+        return redirect('transaction');
     }
 }

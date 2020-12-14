@@ -7,11 +7,11 @@
         <ul class="list-group">
             <li class="list-group-item"><a href="/store/showcase">All Shoe</a></li>
             @if ($user->role == 'member')
-                <li class="list-group-item"><a href="/transaction/cart">View Cart</a></li>
+                <li class="list-group-item"><a href="/cart">View Cart</a></li>
             @elseif ($user->role == 'admin')
                 <li class="list-group-item"><a href="/store/addShoe">Add Shoe</a></li>
             @endif
-            <li class="list-group-item"><a href="/transaction/transactions">View Transactions</a></li>
+            <li class="list-group-item"><a href="/transaction">View Transactions</a></li>
         </ul>
     </div>
     

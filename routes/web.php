@@ -25,27 +25,32 @@ Route::get('/', function () {
 //     Route::get('register', '');
 // });
 
-# URL : /store/showcase
+# URL for store realated activitae such as display items and assign db
 Route::prefix('store')->group(function(){
     Route::get('showcase', 'Store@storeShowcase');
     Route::get('shoe/{shoe_id}', 'Store@shoeDetail');
     Route::get('addShoe', 'Store@addShoe')->middleware('role:admin');
     Route::get('update/{shoe_id}', 'Store@updateShoeDetail')->middleware('role:admin');
 
-    Route::post('shoe', 'Transactions@submitShoeToCart');
     Route::post('addShoe', 'Store@submitAddShoe')->middleware('role:admin');
     Route::post('update', 'Store@submitUpdateShoeDetail')->middleware('role:admin');
     Route::post('search', 'Store@searchBox')->name('search');
 });
 
-#URL : /transaction/cart
-Route::prefix('transaction')->group(function(){
-   Route::get('cart', 'Transactions@cartListDetail');
-   Route::get('cart/{cart_id}', 'Transactions@cartDetail');
-   Route::get('transactions', 'Transactions@viewTransactions');
+# URL related for carting activity
+Route::prefix('cart')->group(function(){
+    Route::get('', 'Transactions@cartListDetail');
+    Route::get('{cart_id}', 'Transactions@cartDetail');
 
+    Route::post('shoe', 'Transactions@submitShoeToCart');
+    Route::post('update', 'Transactions@updateCartDetail');
+});
+
+#URL related for transactions
+Route::prefix('transaction')->group(function(){
+   Route::get('', 'Transactions@viewTransactions');
+   
    Route::post('cart', 'Transactions@checkOut');
-   Route::post('cart/update', 'Transactions@updateCartDetail');
 });
 
 Auth::routes();

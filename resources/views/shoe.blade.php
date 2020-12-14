@@ -14,7 +14,7 @@
             @if ($user->role == 'admin')
             <a href="/store/update/{{ $item->id }}" class="btn btn-primary">Update</a>
             @else
-                <form action="/store/shoe" method="post">
+                <form action="/cart/shoe" method="post">
                     @csrf
                     <label for="quantity">Item Quantity</label>
                     <input type="number" name="quantity" min="1" max="{{$item->quantity}}">

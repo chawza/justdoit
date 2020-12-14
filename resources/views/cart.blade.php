@@ -22,7 +22,7 @@
                     <p>Rp{{ number_format($cart->item->price , 2, ',', '.') }}</p>
                 </div>
                 <div class="col-1">
-                    <a class="btn btn-primary" href="/transaction/cart/{{$cart->id}}">Edit</a>
+                    <a class="btn btn-primary" href="/cart/{{$cart->id}}">Edit</a>
                 </div>
             </div>
             @endforeach
