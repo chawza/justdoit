@@ -41,13 +41,13 @@ class Transactions extends Controller
 
         if(!$cart){
             // cart with id does not exist
-            return redirect('transaction/cart');
+            return redirect('cart');
         }
 
         $item = Shoe::find($cart->shoe_id);
         if(!$item){
             //item on t ransaction detail does not exist
-            return redirect('transaction/cart');
+            return redirect('cart');
         }
         return view('cartDetail', ['user' => Auth::user(), 'cart' => $cart, 'item' => $item]);
     }
