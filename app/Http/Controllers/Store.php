@@ -59,6 +59,10 @@ class Store extends Controller
         */
         $input = $request->input();
 
+        if(!Shoe::validate($input)){
+            return redirect('/store/showcase');
+        }
+
         #retrieve shoe object
         $shoe = Shoe::where('id',$input['item_id'])->first();
         
@@ -99,6 +103,14 @@ class Store extends Controller
         recieve post request from HTML form and add new item to the DB shoes table
         */
         $input = $request->input();
+
+        if(!Shoe::validate($input)){
+            return redirect('/store/showcase');
+        }
+
+        if(!$request->file('thumbnail')){
+            return redirect('/store/showcase');
+        }
 
         # remove _token before iteration
         unset($input['_token']);
