@@ -25,11 +25,12 @@ Route::get('/', function () {
 //     Route::get('register', '');
 // });
 
+Route::get('store/showcase', 'Store@storeShowcase');
+Route::get('store/shoe/{shoe_id}', 'Store@shoeDetail');
+
 Route::middleware(['auth'])->group(function (){
     # URL for store realated activitae such as display items and assign db
     Route::prefix('store')->group(function(){
-        Route::get('showcase', 'Store@storeShowcase');
-        Route::get('shoe/{shoe_id}', 'Store@shoeDetail');
         Route::get('addShoe', 'Store@addShoe')->middleware('role:admin');
         Route::get('update/{shoe_id}', 'Store@updateShoeDetail')->middleware('role:admin');
 

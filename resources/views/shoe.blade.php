@@ -11,6 +11,7 @@
             <p>Available : {{ $item->quantity }}</p>
             <p>{{ $item->description }}</p>
 
+            @auth
             @if ($user->role == 'admin')
             <a href="/store/update/{{ $item->id }}" class="btn btn-primary">Update</a>
             @else
@@ -23,6 +24,7 @@
                     <button type="submit" class="btn btn-primary" value="Submit">Add to Cart</button>
                 </form>
             @endif
+            @endauth
         </div>
     </div>
 @endsection
